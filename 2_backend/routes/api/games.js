@@ -137,6 +137,22 @@ router.post('/', auth.required, function(req, res, next) {
   }).catch(next);
 });
 
+// router.post('/', auth.optional, function(req, res, next) {
+//   User.findById(req.body.game.id).then(function(user){
+//     if (!user) { return res.sendStatus(401); }
+
+//     var game = new Game(req.body.game);
+
+//     game.author = user;
+
+//     return game.save().then(function(){
+//       console.log(game.author);
+//       return res.json({game: game.toJSONFor(user)});
+//     });
+//   }).catch(next);
+// });
+
+
 // return a game
 router.get('/:game', auth.optional, function(req, res, next) {
   Promise.all([
