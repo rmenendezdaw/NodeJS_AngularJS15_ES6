@@ -13,6 +13,7 @@ var ArticleSchema = new mongoose.Schema({
   tagList: [{ type: String }],
   author: { type: mongoose.Schema.Types.ObjectId, ref: 'User' }
 }, {timestamps: true});
+console.log(ArticleSchema)
 
 ArticleSchema.plugin(uniqueValidator, {message: 'is already taken'});
 

@@ -14,7 +14,7 @@ var GameSchema = new mongoose.Schema({
   tagList: [{ type: String }],
   author: { type: mongoose.Schema.Types.ObjectId, ref: 'User' }
 }, {timestamps: true});
-
+console.log(GameSchema)
 GameSchema.plugin(uniqueValidator, {message: 'is already taken'});
 
 GameSchema.pre('validate', function(next){
@@ -26,8 +26,7 @@ GameSchema.pre('validate', function(next){
 });
 
 GameSchema.methods.slugify = function() {
-  // this.slug = slug(this.title) + '-' + (Math.random() * Math.pow(36, 6) | 0).toString(36);
-  console.log(this.slug);
+  this.slug = slug(this.title) + '-' + (Math.random() * Math.pow(36, 6) | 0).toString(36);
 };
 
 GameSchema.methods.updateFavoriteCount = function() {

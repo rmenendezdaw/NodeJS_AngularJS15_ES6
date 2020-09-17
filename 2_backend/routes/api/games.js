@@ -126,7 +126,7 @@ router.post('/', auth.required, function(req, res, next) {
   User.findById(req.payload.id).then(function(user){
     if (!user) { return res.sendStatus(401); }
 
-    var game = new Game(req.body.Game);
+    var game = new Game(req.body.game);
 
     game.author = user;
 
@@ -160,11 +160,13 @@ router.put('/:game', auth.required, function(req, res, next) {
       if(typeof req.body.game.description !== 'undefined'){
         req.game.description = req.body.game.description;
       }
-
+      
       if(typeof req.body.game.body !== 'undefined'){
         req.game.body = req.body.game.body;
       }
-
+      if(typeof req.body.game.price !== 'undefined'){
+        req.game.price = req.body.game.price;
+      }
       if(typeof req.body.game.tagList !== 'undefined'){
         req.game.tagList = req.body.game.tagList
       }
