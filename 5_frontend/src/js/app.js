@@ -17,6 +17,9 @@ import './services';
 import './auth';
 import './settings';
 import './editor';
+import './games';
+
+
 
 
 // Create and bootstrap application
@@ -31,7 +34,8 @@ const requires = [
   'app.services',
   'app.auth',
   'app.settings',
-  'app.editor'
+  'app.editor',
+  'app.games'
 ];
 
 // Mount on window for testing

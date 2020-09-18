@@ -11,11 +11,23 @@ function GamesConfig($stateProvider) {
             title: "Games",
             resolve: {
                 games: function(Games) {
+                    // console.log(Games.getGames().then(games => games));
                     return Games.getGames().then(games => games);
                 }
             }
         })
-
+        .state("app.listGames", {
+            url: "/listGames",
+            controller: "ListGamesCtrl",
+            controllerAs: "$ctrl",
+            templateUrl: "games/listgames.html",
+            title: "List of Games",
+            resolve: {
+              games: function(Games) {
+                return Games.getGames().then(games => games);
+              }
+            }
+          })
         .state("app.detailsGames", {
             url: "/games/:slug",
             controller: "DetailsGamesCtrl",
@@ -30,4 +42,4 @@ function GamesConfig($stateProvider) {
         })
 };
 
-export default HotelsConfig;
+export default GamesConfig;

@@ -22,5 +22,8 @@ servicesModule.service('Comments', CommentsService);
 import TagsService from './tags.service';
 servicesModule.service('Tags', TagsService);
 
+import GamesService from './games.service';
+servicesModule.service('Games', GamesService);
+
 
 export default servicesModule;

@@ -11,7 +11,7 @@ class GamesCtrl {
         var gamesFiltered = new Array();
         this.games.forEach(game => {
             if(game.price == this.filter) {
-                gamesFiltered.push(hotel);
+                gamesFiltered.push(game);
             }
             
         });

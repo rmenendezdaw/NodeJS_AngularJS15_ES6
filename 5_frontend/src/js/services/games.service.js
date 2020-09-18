@@ -1,4 +1,4 @@
-export default class Hotels {
+export default class Games {
     constructor(AppConstants, $http, $q) {
       "ngInject";
   
@@ -13,7 +13,7 @@ export default class Hotels {
             url: this._AppConstants.api + "/games/",
             method: "GET"
         }).then(res => {
-            return res.data.hotels;
+            return res.data.games;
         });
     }
 
@@ -26,11 +26,11 @@ export default class Hotels {
         return this._$http(request).then((res) => res.data); //nos devuelve el array de los juegos
     }
 
-    getHotel(slug) { // get 1 juego
+    getGame(slug) { // get 1 juego
     return this._$http({
         url: this._AppConstants.api + "/games/" + slug,
         method: "GET"
-    }) .then(res => res.data.hotel);
+    }) .then(res => res.data.game);
     }
     
     favorite(slug) {
