@@ -8,14 +8,11 @@ function HomeConfig($stateProvider) {
     controllerAs: '$ctrl',
     templateUrl: 'home/home.html',
     title: 'Home',
-    // resolve: {
-    //   category: function(Games) {
-    //     return Games.getPrice().then(
-    //       (price) => price
-    //     )
-    //   }
-    // }
-
+    resolve: {
+      games: function(Games) {
+        return Games.getGames().then((games) => games);
+    }
+  }
   });
 
 };

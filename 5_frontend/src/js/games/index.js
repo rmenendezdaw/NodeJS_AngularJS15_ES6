@@ -5,8 +5,8 @@ let gamesModule = angular.module("app.games", []);
 import GamesConfig from "./games.config";
 gamesModule.config(GamesConfig);
 
-import HotelsCtrl from "./games.controller";
-gamesModule.controller("GamesCtrl", HotelsCtrl);
+import GamesCtrl from "./games.controller";
+gamesModule.controller("GamesCtrl", GamesCtrl);
 
 import DetailsGamesCtrl from "./games.controller";
 gamesModule.controller("DetailsGamesCtrl", DetailsGamesCtrl);

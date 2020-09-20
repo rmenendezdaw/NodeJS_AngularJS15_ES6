@@ -17,7 +17,13 @@
           Home
         </a>
       </li>
-
+      <li class="nav-item">
+        <a class="nav-link"
+          ui-sref-active="active"
+          ui-sref="app.games">
+          Games
+        </a>
+      </li>
       <li class="nav-item">
         <a class="nav-link"
           ui-sref-active="active"
@@ -47,7 +53,7 @@
           Home
         </a>
       </li>
-
+      
       <li class="nav-item">
         <a class="nav-link"
           ui-sref-active="active"
@@ -70,10 +76,6 @@
           ui-sref="app.profile.main({ username: $ctrl.currentUser.username})">
           <img ng-src="{{$ctrl.currentUser.image}}" class="user-pic" />
           {{ $ctrl.currentUser.username }}
-        </a>
-      </li>
-      <li>
-        <a ui-sref="app.listGames"> Games
         </a>
       </li>
     </ul>

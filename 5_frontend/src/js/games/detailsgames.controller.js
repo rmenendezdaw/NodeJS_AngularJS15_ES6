@@ -1,5 +1,7 @@
 class DetailsGamesCtrl {
-    constructor(game, $scope) {
+    constructor(game,$state, $scope) {
+        console.log(game)
+
         //llama desde games.config(resolve)
     
         "ngInject";
@@ -7,7 +9,8 @@ class DetailsGamesCtrl {
         $scope.game = game;
 
         this._$scope.back = function() {
-            $state.go("app.games", { filter: this.game.price });
+            console.log(this.game.price)
+            $state.go("app.games");
         };
 
     }
