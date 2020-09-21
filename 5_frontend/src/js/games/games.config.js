@@ -14,18 +14,6 @@ function GamesConfig($stateProvider) {
                 }
             }
         })
-        .state("app.listGames", {
-            url: "/listGames",
-            controller: "ListGamesCtrl",
-            controllerAs: "$ctrl",
-            templateUrl: "games/listgames.html",
-            title: "List of Games",
-            resolve: {
-              games: function(Games) {
-                return Games.getGames().then(games => games);
-              }
-            }
-          })
         .state("app.detailsGames", {
             url: "/games/:slug",
             controller: "DetailsGamesCtrl",

@@ -3,21 +3,20 @@ class GamesCtrl {
         "ngInject";
 
         this._$scope = $scope;
-
         this.games = games;
         this.filter = $stateParams.filter;
-
-        var gamesFiltered = new Array();
-        this.games.forEach(game => {
-          if (game.category == this.filter) {
-            gamesFiltered.push(game);
-          }
-          console.log(gamesFiltered);
-        });
-        $scope.gamesFiltered = gamesFiltered;
+        $scope.games = this.games;
+        // var gamesFiltered = new Array();
+        // this.games.forEach(game => {
+        //   if (game.category == this.filter) {
+        //     gamesFiltered.push(game);
+        //   }
+        //   console.log(gamesFiltered);
+        // });
+        // $scope.gamesFiltered = gamesFiltered;
+          console.log(games);
 
         this._$scope.openDetails = function () {
-
             $state.go("app.detailsGames", { slug: this.game["slug"] });
         };
     }
