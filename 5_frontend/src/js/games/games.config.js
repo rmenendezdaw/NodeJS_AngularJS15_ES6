@@ -22,6 +22,7 @@ function GamesConfig($stateProvider) {
             title: "Details Games",
             resolve: {
                 game: function(Games, $stateParams){
+                    // console.log("games.config.js", $stateParams.slug);
                     return Games.getGame($stateParams.slug).then(game => game);
                 }
             }

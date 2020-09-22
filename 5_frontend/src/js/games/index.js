@@ -8,11 +8,8 @@ gamesModule.config(GamesConfig);
 import GamesCtrl from "./games.controller";
 gamesModule.controller("GamesCtrl", GamesCtrl);
 
-import DetailsGamesCtrl from "./games.controller";
+import DetailsGamesCtrl from "./detailsgames.controller";
 gamesModule.controller("DetailsGamesCtrl", DetailsGamesCtrl);
-
-import ListGamesCtrl from "./games.controller";
-gamesModule.controller("ListGamesCtrl", ListGamesCtrl);
 
 export default gamesModule;
 

@@ -1,8 +1,11 @@
+console.log("cargamos")
 class DetailsGamesCtrl {
-    constructor(game) {
+    constructor(game, $scope) {
         "ngInject";
+        console.log("controller details")
         this.game=game;
-        //console.log(event);
-      }
+    }
+      
 }
+
 export default DetailsGamesCtrl;

@@ -30,4 +30,7 @@ componentsModule.component('listPagination', ListPagination);
 import GamesList from './games-helpers/games-list.component';
 componentsModule.component('gamesList', GamesList);
 
+import GamesDetail from './games-helpers/games-detail.component';
+componentsModule.component('gamesDetail', GamesDetail);
+
 export default componentsModule;

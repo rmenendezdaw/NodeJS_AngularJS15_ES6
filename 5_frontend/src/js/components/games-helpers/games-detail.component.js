@@ -4,7 +4,6 @@ let GamesDetail = {
     },
     templateUrl: 'components/games-helpers/games-detail.html'
   };
-  
   export default GamesDetail;
   
   

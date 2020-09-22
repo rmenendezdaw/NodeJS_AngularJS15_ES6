@@ -6,6 +6,7 @@ class GamesCtrl {
         this.games = games;
         this.filter = $stateParams.filter;
         $scope.games = this.games;
+
         // var gamesFiltered = new Array();
         // this.games.forEach(game => {
         //   if (game.category == this.filter) {
@@ -14,11 +15,7 @@ class GamesCtrl {
         //   console.log(gamesFiltered);
         // });
         // $scope.gamesFiltered = gamesFiltered;
-          console.log(games);
-
-        this._$scope.openDetails = function () {
-            $state.go("app.detailsGames", { slug: this.game["slug"] });
-        };
+        //   console.log(game)
     }
 }
 export default GamesCtrl;

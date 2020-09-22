@@ -33,9 +33,8 @@ export default class Games {
     return this._$http({
         url: this._AppConstants.api + "/games/" + slug,
         method: "GET"
-    }) .then(res => res.data.game);
+    }) .then( res => res.data.game);
     }
-    
     favorite(slug) {
         return this._$http({
         url: this._AppConstants.api + "/games/" + slug + "/favorite",

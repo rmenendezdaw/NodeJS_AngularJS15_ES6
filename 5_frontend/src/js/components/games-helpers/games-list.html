@@ -1,6 +1,6 @@
 <div class="game" ng-repeat="game in $ctrl.games">
 <h3>{{game.title}}</h3>
 <p>Price: {{game.price}} €</p>
-<button ui-sref="app.detailsGames({id:game.id})">See more </button>
+<button ui-sref="app.detailsGames({slug:game.slug})">See more </button>
 
 </div>
