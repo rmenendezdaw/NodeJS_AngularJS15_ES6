@@ -32,8 +32,8 @@
                 ng-click="$ctrl.changeList({ type: 'all' })">
                 Global Feed
               </a>
+              <games-list games = "$ctrl.games"></games-list>
             </li>
-
             <li class="nav-item" ng-show="$ctrl.listConfig.filters.tag">
               <a href="" class="nav-link active">
                 <i class="ion-pound"></i> {{$ctrl.listConfig.filters.tag}}
