@@ -78,7 +78,7 @@ router.get('/', auth.optional, function(req, res, next) {
 
       return res.json({
         games: games.map(function(game){
-          return game.toJSONFor(user);
+          return game.toJSONFor();
         }),
         gamesCount: gamesCount
       });

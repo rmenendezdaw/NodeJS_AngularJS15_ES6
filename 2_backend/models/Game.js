@@ -12,7 +12,7 @@ var GameSchema = new mongoose.Schema({
   favoritesCount: {type: Number, default: 0},
   comments: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Comment' }],
   tagList: [{ type: String }],
-  author: { type: mongoose.Schema.Types.ObjectId, ref: 'User' }
+  // author: { type: mongoose.Schema.Types.ObjectId, ref: 'User' }
 }, {timestamps: true});
 console.log(GameSchema)
 GameSchema.plugin(uniqueValidator, {message: 'is already taken'});
@@ -50,8 +50,8 @@ GameSchema.methods.toJSONFor = function(user){
     updatedAt: this.updatedAt,
     tagList: this.tagList,
     favorited: user ? user.isFavorite(this._id) : false,
-    favoritesCount: this.favoritesCount,
-    author: this.author.toProfileJSONFor(user)
+    favoritesCount: this.favoritesCount
+    // author: this.author.toProfileJSONFor(user)
   };
 };
 mongoose.model('Game', GameSchema);

@@ -14,7 +14,13 @@ export default class User {
 
 
   attemptAuth(type, credentials) {
-    let route = (type === 'login') ? '/login' : '';
+    let route = '';
+    if (type === 'login'){
+      route='/login';
+    }
+    if (type === 'sociallogin'){
+      route='/sociallogin';
+    }
     return this._$http({
       url: this._AppConstants.api + '/users' + route,
       method: 'POST',
@@ -53,7 +59,6 @@ export default class User {
   verifyAuth() {
     let deferred = this._$q.defer();
 
-    // check for JWT token
     if (!this._JWT.get()) {
       deferred.resolve(false);
       return deferred.promise;
@@ -88,7 +93,7 @@ export default class User {
 
   ensureAuthIs(bool) {
     let deferred = this._$q.defer();
-
+    console.log("in service")
     this.verifyAuth().then((authValid) => {
       if (authValid !== bool) {
         this._$state.go('app.home')
