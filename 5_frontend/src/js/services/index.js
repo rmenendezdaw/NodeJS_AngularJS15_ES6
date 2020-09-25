@@ -19,6 +19,9 @@ servicesModule.service('Articles', ArticlesService);
 import CommentsService from './comments.service';
 servicesModule.service('Comments', CommentsService);
 
+import ToastrService from './toastr.service';
+servicesModule.service('Toastr', ToastrService);
+
 import TagsService from './tags.service';
 servicesModule.service('Tags', TagsService);
 
