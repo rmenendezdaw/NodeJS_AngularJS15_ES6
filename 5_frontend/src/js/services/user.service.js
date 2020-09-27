@@ -93,7 +93,7 @@ export default class User {
 
   ensureAuthIs(bool) {
     let deferred = this._$q.defer();
-    console.log("in service")
+    // console.log("in service")
     this.verifyAuth().then((authValid) => {
       if (authValid !== bool) {
         this._$state.go('app.home')

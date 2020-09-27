@@ -59,14 +59,30 @@ router.post('/users/login', function(req, res, next){
     }
   })(req, res, next);
 });
-
+router.post('/users/register', function(req, res, next){
+  User.find({$or:[{email:req.body.user.email},{username:req.body.user.username}],
+    userSocial:req.body.user.username}).then(function(user){
+      if(user[0]){
+        return res.status(422).json("The email,username or socialID are already created");
+      }else{
+        var user = new User();
+        user.username = req.body.user.username;
+        user.userSocial = req.body.user.username;
+        user.email = req.body.user.email;
+        user.nombre = req.body.user.nombre;
+        user.type = "client";
+        user.setPassword(req.body.user.password);
+  }
+    user.save().then(function(){
+      return res.json({user: user.toAuthJSON()});
+    }).catch(next);
+  });
+});
 router.post('/users', function(req, res, next){
   var user = new User();
-
   user.username = req.body.user.username;
   user.email = req.body.user.email;
   user.setPassword(req.body.user.password);
-
   user.save().then(function(){
     return res.json({user: user.toAuthJSON()});
   }).catch(next);
@@ -80,12 +96,12 @@ router.post('/users/sociallogin', function(req, res, next){
   }
   User.findOne({ '_id' : sessionUser }, function(err, user) {
     console.log(err);
-    console.log(user);
+    // console.log(user);
     if (err)
       return done(err);
     // if the user is found then log them in
     if (user) {
-        console.log(user);
+        // console.log(user);
         user.token = user.generateJWT();
         return res.json({user: user.toAuthJSON()});// user found, return that user
     } else {

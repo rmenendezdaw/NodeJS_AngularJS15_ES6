@@ -14,7 +14,7 @@ var GameSchema = new mongoose.Schema({
   tagList: [{ type: String }],
   // author: { type: mongoose.Schema.Types.ObjectId, ref: 'User' }
 }, {timestamps: true});
-console.log(GameSchema)
+// console.log(GameSchema)
 GameSchema.plugin(uniqueValidator, {message: 'is already taken'});
 
 GameSchema.pre('validate', function(next){
