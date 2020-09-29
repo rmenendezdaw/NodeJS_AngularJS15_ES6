@@ -11,7 +11,10 @@ function HomeConfig($stateProvider) {
     resolve: {
       games: function(Games) {
         return Games.getGames().then((games) => games);
-    }
+    },
+      categories: function(Games) {
+        return Games.getCategories().then((games) => games);
+      }
   }
   });
 

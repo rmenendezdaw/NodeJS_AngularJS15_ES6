@@ -28,7 +28,12 @@ export default class Games {
         return this._$http(request).then((res) => res.data); 
         //nos devuelve el array de los games
     }
-
+    getCategories() {
+    return this._$http({
+      url: this._AppConstants.api + "/games/category",
+      method: "GET"
+    }).then(res => res.data.category);
+  }
     getGame(slug) { // get 1 game
     return this._$http({
         url: this._AppConstants.api + "/games/" + slug,

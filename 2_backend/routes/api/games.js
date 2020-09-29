@@ -122,6 +122,12 @@ router.get('/feed', auth.required, function(req, res, next) {
   });
 });
 
+router.get('/category', function(req,res,next){
+  Game.distinct('category').then(function(category){
+    return res.json({category: category});
+  }).catch(next);
+});
+
 router.post('/', auth.required, function(req, res, next) {
   User.findById(req.payload.id).then(function(user){
     if (!user) { return res.sendStatus(401); }

@@ -1,10 +1,11 @@
 class HomeCtrl {
-  constructor(AppConstants, games, Tags, $scope) {
+  constructor(AppConstants, games, Tags, categories) {
     'ngInject';
 
     this.appName = AppConstants.appName;
-    this._$scope = $scope;
     this.games = games;
+    this.categories = categories;
+    console.log(categories)
   }
 
 }

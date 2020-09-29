@@ -3,7 +3,7 @@ function GamesConfig($stateProvider) {
     $stateProvider
 
         .state("app.games", {
-            url:"/games",
+            url:"/games/:filter",
             controller: "GamesCtrl",
             controllerAs: "$ctrl",
             templateUrl: "games/games.html",
