@@ -1,10 +1,9 @@
 class SocialCtrl {
-    constructor(User, $state, $scope, Toastr) {
+    constructor(User, $state, Toastr) {
       'ngInject';
   
       this._User = User;
       this._$state = $state;
-      this._$scope = $scope;
       this._toaster = Toastr;
   
       this.title = $state.current.title;

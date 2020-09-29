@@ -12,5 +12,7 @@ homeModule.config(HomeConfig);
 import HomeCtrl from './home.controller';
 homeModule.controller('HomeCtrl', HomeCtrl);
 
-
+//Component
+import homeSliderComp from './homeSlider.component';
+homeModule.component('homeSliderComp', homeSliderComp);
 export default homeModule;
