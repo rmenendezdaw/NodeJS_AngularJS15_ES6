@@ -15,7 +15,7 @@ function GamesConfig($stateProvider) {
             }
         })
         .state("app.detailsGames", {
-            url: "/games/:slug",
+            url: "/games/details/:slug",
             controller: "DetailsGamesCtrl",
             controllerAs: "$ctrl",
             templateUrl: "games/detailsgames.html",

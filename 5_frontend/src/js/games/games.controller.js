@@ -1,18 +1,23 @@
 class GamesCtrl {
-    constructor(games, $state, $stateParams) {
+    constructor(games, $stateParams) {
         "ngInject";
 
-        this.games = games;
+        this.games = [];
+
         this.filter = $stateParams.filter;
-        $scope.games = this.games;
-        console.log(this.filter);
-        var gamesFiltered = new Array();
-        this.games.forEach(game => {
-          if (game.category == this.filter) {
-            gamesFiltered.push(game);
+        // console.log(this.games);
+        if(this.filter){
+          for(let game in games){
+            if (games[game].category === this.filter) {
+                if(this.games)
+                this.games.push(games[game]);
+                // console.log(this.games);
+            }
           }
-        });
-        this.game= game;
+        }else{
+          this.games=games;
+        }
+        
     }
 }
 export default GamesCtrl;

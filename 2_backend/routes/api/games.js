@@ -135,7 +135,6 @@ router.post('/', auth.required, function(req, res, next) {
     var game = new Game(req.body.game);
 
     game.author = user;
-
     return game.save().then(function(){
       console.log(game.author);
       return res.json({game: game.toJSONFor(user)});
