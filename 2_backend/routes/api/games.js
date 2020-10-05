@@ -277,7 +277,7 @@ router.post('/:game/comments', auth.required, function(req, res, next) {
     comment.author = user;
 
     return comment.save().then(function(){
-      req.game.comments.push(comment);
+      req.game.comments = req.game.comments.concat([comment]);
 
       return req.game.save().then(function(game) {
         res.json({comment: comment.toJSONFor(user)});
