@@ -80,7 +80,7 @@ UserSchema.methods.isFavorite = function(id){
 
 UserSchema.methods.follow = function(id){
   if(this.following.indexOf(id) === -1){
-    this.following.push(id);
+    this.following = this.following.concat([id]);
   }
 
   return this.save();
@@ -96,5 +96,6 @@ UserSchema.methods.isFollowing = function(id){
     return followId.toString() === id.toString();
   });
 };
+
 
 mongoose.model('User', UserSchema);
