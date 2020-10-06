@@ -5,7 +5,9 @@
       game="game"
       class="pull-xs-right">
       {{game.favoritesCount}}
-    </favorite-btn>
+</favorite-btn>
+<follow-btn user="$ctrl.article.author"></follow-btn>
+
 <button ui-sref="app.detailsGames({slug:game.slug})">See more </button>
 
 </div>

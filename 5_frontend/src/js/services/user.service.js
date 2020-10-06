@@ -21,6 +21,9 @@ export default class User {
     if (type === 'sociallogin'){
       route='/sociallogin';
     }
+    if (type === 'register'){
+      route='/register';
+    }
     return this._$http({
       url: this._AppConstants.api + '/users' + route,
       method: 'POST',

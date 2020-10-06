@@ -9,21 +9,18 @@ class AuthCtrl {
     this.authType = $state.current.name.replace('app.', '');
 
   }
-
-  submitForm() {
-    this.isSubmitting = true;
-
+  submit() {
     this._User.attemptAuth(this.authType, this.formData).then(
-      (res) => {
-        this._toaster.showToastr('success','Successfully Logged In');
-        this._$state.go('app.home');
-      },
-      (err) => {
-        this._toaster.showToastr('error','Error trying to login');
-        this.isSubmitting = false;
-        this.errors = err.data.errors;
-      }
-    )
+          (res) => {
+            this._toaster.showToastr('success','Successfully Logged In');
+            this._$state.go('app.home');
+          },
+          (err) => {
+            this._toaster.showToastr('error','Error trying to login');
+            this.isSubmitting = false;
+            this.errors = err.data.errors;
+          }
+        )
   }
 }
 

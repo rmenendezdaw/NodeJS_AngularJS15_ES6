@@ -68,9 +68,12 @@
               </div>
             </fieldset>
 
-            <button class="btn btn-lg btn-primary pull-xs-right"
+            <!-- <button class="btn btn-lg btn-primary pull-xs-right"
               type="submit"
               ng-bind="::$ctrl.title">
+            </button> -->
+            <button class="btn btn-lg pull-xs-right btn-primary" type="button" ng-click="$ctrl.submit()">
+              Send
             </button>
             <a href="http://localhost:3000/api/auth/googleplus" style="font-size: 25px; color:black"><i class="ion-social-google"></i>&nbsp;Google</a>
             <a href="http://localhost:3000/api/auth/github" style="font-size: 25px; color:black"><i class="ion-social-github"></i>&nbsp;Github</a>
