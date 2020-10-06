@@ -27,10 +27,8 @@ componentsModule.component('articleList', ArticleList);
 import ListPagination from './article-helpers/list-pagination.component';
 componentsModule.component('listPagination', ListPagination);
 
-import GamesList from './games-helpers/games-list.component';
-componentsModule.component('gamesList', GamesList);
+import GameList from './game-helpers/game-list.component';
+componentsModule.component('gameList', GameList);
 
-import GamesDetail from './games-helpers/games-detail.component';
-componentsModule.component('gamesDetail', GamesDetail);
 
 export default componentsModule;
