@@ -20,6 +20,7 @@ import './auth';
 import './settings';
 import './editor';
 import './games';
+import './game';
 import 'angular-messages';
 
 
@@ -40,6 +41,7 @@ const requires = [
   'app.settings',
   'app.editor',
   'app.games',
+  'app.detailsgame',
   'ngMessages',
   toastr
 ];

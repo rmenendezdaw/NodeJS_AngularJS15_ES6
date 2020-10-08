@@ -5,7 +5,7 @@ class HomeCtrl {
     this.appName = AppConstants.appName;
     this.games = games;
     this.categories = categories;
-    console.log(categories)
+    // console.log(categories)
   }
 
 }

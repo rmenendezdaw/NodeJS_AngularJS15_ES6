@@ -1,4 +1,4 @@
-class DetailsGamesCtrl {
+class DetailsGameCtrl {
     constructor(game) {
         "ngInject";
         this.game=game;
@@ -7,4 +7,4 @@ class DetailsGamesCtrl {
       
 }
 
-export default DetailsGamesCtrl;
+export default DetailsGameCtrl;
