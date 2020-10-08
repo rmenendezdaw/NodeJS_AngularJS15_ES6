@@ -30,5 +30,7 @@ componentsModule.component('listPagination', ListPagination);
 import GameList from './game-helpers/game-list.component';
 componentsModule.component('gameList', GameList);
 
+import GamePreview from './game-helpers/game-preview.component';
+componentsModule.component('gamePreview', GamePreview);
 
 export default componentsModule;

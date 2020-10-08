@@ -1,0 +1,11 @@
+<div class="game-preview">
+    <h3>{{$ctrl.game.title}}</h3>
+    <p>Price: {{$ctrl.game.price}} €</p>
+    <favorite-btn
+          game="$ctrl.game"
+          class="pull-xs-right">
+          {{$ctrl.game.favoritesCount}}
+    </favorite-btn>
+    <follow-btn user="$ctrl.game.author"></follow-btn>
+    
+<button ui-sref="app.detailsGames({slug:game.slug})">See more </button>
