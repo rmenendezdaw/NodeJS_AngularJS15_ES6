@@ -9,8 +9,6 @@ detailsgameModule.config(DetailsGameConfig);
 import DetailsGameCtrl from "./detailsgame.controller";
 detailsgameModule.controller("DetailsGameCtrl", DetailsGameCtrl);
 
-// import Comment from './comment.component';
-// gamesModule.component('comment', Comment);
 
 export default detailsgameModule;
 

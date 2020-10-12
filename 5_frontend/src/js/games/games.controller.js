@@ -5,16 +5,17 @@ class GamesCtrl {
         this.games = [];
 
         this.filter = $stateParams.filter;
-        // console.log(this.games);
         if(this.filter){
           for(let game in games){
             if (games[game].category === this.filter) {
                 if(this.games)
                 this.games.push(games[game]);
-                // console.log(this.games);
+                // console.log("games controller",this.games);
+
             }
           }
         }else{
+          // console.log(this.games);
           this.games=games;
         }
         

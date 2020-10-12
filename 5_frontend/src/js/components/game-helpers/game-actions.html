@@ -1,0 +1,19 @@
+<span ng-show="$ctrl.canModify">
+    <a class="btn btn-sm btn-outline-secondary"
+      ui-sref="app.editor({ slug: $ctrl.game.slug })">
+      <i class="ion-edit"></i> Edit Game
+    </a>
+
+    <button class="btn btn-sm btn-outline-danger"
+      ng-class="{disabled: $ctrl.isDeleting}"
+      ng-click="$ctrl.deleteGame()">
+      <i class="ion-trash-a"></i> Delete Game
+    </button>
+  </span>
+
+  <span ng-hide="$ctrl.canModify">
+    <follow-btn user="$ctrl.game.author"></follow-btn>
+    <favorite-btn game="$ctrl.game">
+      {{ $ctrl.game.favorited ? 'Unfavorite' : 'Favorite' }} Game <span class="counter">({{$ctrl.game.favoritesCount}})</span>
+    </favorite-btn>
+  </span>

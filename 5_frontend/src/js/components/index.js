@@ -27,10 +27,16 @@ componentsModule.component('articleList', ArticleList);
 import ListPagination from './article-helpers/list-pagination.component';
 componentsModule.component('listPagination', ListPagination);
 
-import GameList from './game-helpers/game-list.component';
-componentsModule.component('gameList', GameList);
+import GamesList from './games-helpers/games-list.component';
+componentsModule.component('gamesList', GamesList);
 
-import GamePreview from './game-helpers/game-preview.component';
-componentsModule.component('gamePreview', GamePreview);
+import GamesPreview from './games-helpers/games-preview.component';
+componentsModule.component('gamesPreview', GamesPreview);
+
+import Comment from './game-helpers/comment.component';
+componentsModule.component('comment', Comment);
+
+import GameActions from './game-helpers/game-actions.component';
+componentsModule.component('gameActions', GameActions);
 
 export default componentsModule;

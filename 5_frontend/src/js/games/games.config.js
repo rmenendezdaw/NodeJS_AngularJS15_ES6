@@ -1,7 +1,6 @@
 function GamesConfig($stateProvider) {
     "ngInject";
     $stateProvider
-
         .state("app.games", {
             url:"/games/:filter",
             controller: "GamesCtrl",
@@ -10,20 +9,8 @@ function GamesConfig($stateProvider) {
             title: "Games",
             resolve: {
                 games: function(Games) {
+                    // console.log(Games.getGames().then(games => games))
                     return Games.getGames().then(games => games);
-                }
-            }
-        })
-        .state("app.detailsGames", {
-            url: "/games/details/:slug",
-            controller: "DetailsGamesCtrl",
-            controllerAs: "$ctrl",
-            templateUrl: "games/detailsgames.html",
-            title: "Details Games",
-            resolve: {
-                game: function(Games, $stateParams){
-                    // console.log("games.config.js", $stateParams.slug);
-                    return Games.getGame($stateParams.slug).then(game => game);
                 }
             }
         })

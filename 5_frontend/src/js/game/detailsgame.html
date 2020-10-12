@@ -4,30 +4,15 @@
     <p ng-bind="'Price: '+$ctrl.game.price + '€'"></p>
     <p ng-bind="'Category: '+$ctrl.game.category"></p>
     <p ng-bind="'Description: '+$ctrl.game.body"> </p>
-    <button ui-sref="app.games">Back </button>
+  </div>
+  
+  <button ui-sref="app.games">Back </button>
+  <favorite-btn
+          game="$ctrl.game"
+          class="pull-xs-right">
+          {{$ctrl.game.favoritesCount}}
+    </favorite-btn>
+    <follow-btn user="$ctrl.game.author"></follow-btn>
+  <game-actions game="$ctrl.game"></game-actions>
 
-</div>
-
-
-<div class="row">
-    <div class="col-xs-12 col-md-8 offset-md-2">
-
-      <div show-authed="true">
-        <list-errors from="$crl.commentForm.errors"></list-errors>
-        <form class="card comment-form" ng-submit="$ctrl.addComment()">
-          <fieldset ng-disabled="$ctrl.commentForm.isSubmitting">
-            <div class="card-block">
-              <textarea class="form-control"
-                placeholder="Write a comment..."
-                rows="3"
-                ng-model="$ctrl.commentForm.body"></textarea>
-            </div>
-            <div class="card-footer">
-              <img ng-src="{{::$ctrl.currentUser.image}}" class="comment-author-img" />
-              <button class="btn btn-sm btn-primary" type="submit">
-               Post Comment
-              </button>
-            </div>
-          </fieldset>
-        </form>
-      </div>
+  <comment ng-repeat="cmt in $ctrl.comments"></comment>
