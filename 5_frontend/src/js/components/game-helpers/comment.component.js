@@ -8,7 +8,6 @@ class CommentCtrl {
         } else {
           this.canModify = false;
         }
-    
       }
     }
 }
