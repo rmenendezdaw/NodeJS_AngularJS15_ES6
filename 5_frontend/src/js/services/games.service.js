@@ -18,15 +18,24 @@ export default class Games {
             return res.data.games;
         });
     }
-    query() { //se usa en el games-list component para obtener todos los juegos
-        // Create the $http object for this request
-        let request = {
-          url: this._AppConstants.api + '/games/',
-          method: 'GET',
-        };
+    // query() { //se usa en el games-list component para obtener todos los juegos
+    //     // Create the $http object for this request
+    //     let request = {
+    //       url: this._AppConstants.api + '/games/',
+    //       method: 'GET',
+    //     };
 
-        return this._$http(request).then((res) => res.data); 
-        //nos devuelve el array de los games
+    //     return this._$http(request).then((res) => res.data); 
+    //     //nos devuelve el array de los games
+    // }
+    query(config) {
+      // Create the $http object for this request
+      let request = {
+        url: this._AppConstants.api + '/games' + ((config.type === 'feed') ? '/feed' : ''),
+        method: 'GET',
+        params: config.filters ? config.filters : null
+      };
+      return this._$http(request).then((res) => res.data);
     }
     getCategories() {
     return this._$http({

@@ -27,6 +27,7 @@ class GamesListCtrl {
   }
 
   setPageTo(pageNumber) {
+    console.log(pageNumber)
     this.listConfig.currentPage = pageNumber;
     this.runQuery();
   }
@@ -56,7 +57,7 @@ class GamesListCtrl {
     .query(queryConfig)
     .then(
       (res) => {
-        console.log(queryConfig)
+        console.log(res)
         this.loading = false;
 
         // Update list and total pages
