@@ -9,9 +9,6 @@ function HomeConfig($stateProvider) {
     templateUrl: 'home/home.html',
     title: 'Home',
     resolve: {
-      games: function(Games) {
-        return Games.getGames().then((games) => games);
-    },
       categories: function(Games) {
         return Games.getCategories().then((games) => games);
       }

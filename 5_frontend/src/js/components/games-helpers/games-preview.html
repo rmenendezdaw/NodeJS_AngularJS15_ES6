@@ -5,9 +5,12 @@
           game="$ctrl.game"
           class="pull-xs-right">
           {{$ctrl.game.favoritesCount}}
-    </favorite-btn>
-    <follow-btn user="$ctrl.game.author"></follow-btn>
-    
+    </favorite-btn>    
 <button ui-sref="app.detailsgame({slug:$ctrl.game.slug})">See more </button>
-
+<ul class="tag-list">
+    <li class="tag-default tag-pill tag-outline"
+      ng-repeat="tag in $ctrl.game.tagList">
+      {{tag}}
+    </li>
+  </ul>
 </div>
