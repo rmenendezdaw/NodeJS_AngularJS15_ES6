@@ -32,7 +32,6 @@ router.get('/', auth.optional, function(req, res, next) {
   var query = {};
   var limit = 20;
   var offset = 0;
-
   if(typeof req.query.limit !== 'undefined'){
     limit = req.query.limit;
   }
@@ -55,7 +54,9 @@ router.get('/', auth.optional, function(req, res, next) {
     if(author){
       query.author = author._id;
     }
-
+    if(req.query.category){
+      query.category = req.query.category;
+    }
     if(favoriter){
       query._id = {$in: favoriter.favorites};
     } else if(req.query.favorited){
@@ -121,13 +122,19 @@ router.get('/feed', auth.required, function(req, res, next) {
     }).catch(next);
   });
 });
-
+//get categories
 router.get('/category', function(req,res,next){
   Game.distinct('category').then(function(category){
     return res.json({category: category});
   }).catch(next);
 });
 
+router.get('/filter/:category', function (req, res, next){
+    Game.find({category: req.params.category}).then(function(games) {
+      console.log(games);
+      return res.json({games: games});
+    }).catch(next);
+})
 router.post('/', auth.required, function(req, res, next) {
   User.findById(req.payload.id).then(function(user){
     if (!user) { return res.sendStatus(401); }
@@ -141,22 +148,6 @@ router.post('/', auth.required, function(req, res, next) {
     });
   }).catch(next);
 });
-
-// router.post('/', auth.optional, function(req, res, next) {
-//   User.findById(req.body.game.id).then(function(user){
-//     if (!user) { return res.sendStatus(401); }
-
-//     var game = new Game(req.body.game);
-
-//     game.author = user;
-
-//     return game.save().then(function(){
-//       console.log(game.author);
-//       return res.json({game: game.toJSONFor(user)});
-//     });
-//   }).catch(next);
-// });
-
 
 // return a game
 router.get('/:game', auth.optional, function(req, res, next) {

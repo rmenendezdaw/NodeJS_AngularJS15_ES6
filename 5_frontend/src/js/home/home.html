@@ -1,14 +1,31 @@
  <div class="home-page">
   <home-slider-comp></home-slider-comp>
-  <h2>Most popular games</h2>
+  <div class="col-md-9">
+    <!-- Tabs for toggling between feed, article lists -->
+    <div class="feed-toggle">
+      <ul class="nav nav-pills outline-active">
+
+        <li class="nav-item">
+          <a href="" class="nav-link"
+            ng-class="{ active: $ctrl.listConfig.type === 'feed' }"
+            ng-click="$ctrl.changeList({ type: 'feed' })">
+            Your Feed
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="" class="nav-link"
+            ng-class="{ active: $ctrl.listConfig.type === 'all' && !$ctrl.listConfig.filters }"
+            ng-click="$ctrl.changeList({ type: 'all' })">
+            Global Feed
+          </a>
+        </li>
+      </ul>
+      </div>
+    </div>
+<br><main>
   <games-list limit="5" list-config="$ctrl.listConfig"></games-list>
-  
-  
-  
-  
-  
-  
-  
+</main>
+
   <hr>
   <div class="categories">
     <button ng-repeat="c in $ctrl.categories">

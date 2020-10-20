@@ -57,7 +57,7 @@ class GamesListCtrl {
     .query(queryConfig)
     .then(
       (res) => {
-        console.log(res)
+        // console.log(res)
         this.loading = false;
 
         // Update list and total pages

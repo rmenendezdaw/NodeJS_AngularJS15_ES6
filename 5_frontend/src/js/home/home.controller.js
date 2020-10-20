@@ -1,9 +1,10 @@
 class HomeCtrl {
-  constructor(AppConstants, Tags, categories, User) {
+  constructor(AppConstants, Tags, categories, User, $scope) {
     'ngInject';
 
     this.appName = AppConstants.appName;
     this.categories = categories;
+    this._$scope = $scope;
     // console.log(categories)
     Tags
       .getAll()

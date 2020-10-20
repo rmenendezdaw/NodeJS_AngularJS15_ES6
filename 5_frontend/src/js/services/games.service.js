@@ -37,12 +37,20 @@ export default class Games {
       };
       return this._$http(request).then((res) => res.data);
     }
+    //Get the categories of the games
     getCategories() {
     return this._$http({
       url: this._AppConstants.api + "/games/category",
       method: "GET"
     }).then(res => res.data.category);
   }
+  //Get games in a category
+    getCategory(category){
+      return this._$http({
+        url: this._AppConstants.api + "/games/filter/" + category,
+        method: "GET"
+      }).then(res => res.data.games);
+    }
     getGame(slug) { // get 1 game
     return this._$http({
         url: this._AppConstants.api + "/games/" + slug,
