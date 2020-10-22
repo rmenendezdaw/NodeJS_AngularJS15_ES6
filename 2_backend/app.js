@@ -9,6 +9,12 @@ var http = require('http'),
     errorhandler = require('errorhandler'),
     mongoose = require('mongoose');
 
+
+//SWAGGER
+swaggerUI= require('swagger-ui-express');
+var swaggerDocument=require('./swagger.json');
+swaggerDocument.host='localhost:3000'
+
 var isProduction = process.env.NODE_ENV === 'production';
 
 // Create global app object
@@ -50,6 +56,8 @@ app.use(passport.session())
 
 app.use(require('./routes'));
 
+//SWAGGER
+app.use('/api-docs', swaggerUI.serve, swaggerUI.setup(swaggerDocument));
 /// catch 404 and forward to error handler
 app.use(function(req, res, next) {
   var err = new Error('Not Found');

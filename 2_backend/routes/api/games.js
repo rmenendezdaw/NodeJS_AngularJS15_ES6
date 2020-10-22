@@ -131,7 +131,7 @@ router.get('/category', function(req,res,next){
 
 router.get('/filter/:category', function (req, res, next){
     Game.find({category: req.params.category}).then(function(games) {
-      console.log(games);
+      // console.log(games);
       return res.json({games: games});
     }).catch(next);
 })
@@ -143,7 +143,7 @@ router.post('/', auth.required, function(req, res, next) {
 
     game.author = user;
     return game.save().then(function(){
-      console.log(game.author);
+      // console.log(game.author);
       return res.json({game: game.toJSONFor(user)});
     });
   }).catch(next);
