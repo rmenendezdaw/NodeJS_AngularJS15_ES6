@@ -4,6 +4,7 @@ var Game = mongoose.model('Game');
 var Comment = mongoose.model('Comment');
 var User = mongoose.model('User');
 var auth = require('../auth');
+let utilGames = require('../../utils/games.utils');
 
 // Preload game objects on routes with ':game'
 router.param('game', function(req, res, next, slug) {
@@ -193,18 +194,20 @@ router.put('/:game', auth.required, function(req, res, next) {
 });
 
 // delete game
-router.delete('/:game', auth.required, function(req, res, next) {
-  User.findById(req.payload.id).then(function(user){
-    if (!user) { return res.sendStatus(401); }
+router.delete("/:game", auth.required, async function (req, res, next) { //search by slug
+  try {
+    console.log("delete1")
+    let user = await User.findById(req.payload.id);
+    let userGame = await Game.findOne({slug: req.params.game}).populate('author').toJSONFor().author;
 
-    if(req.game.author._id.toString() === req.payload.id.toString()){
-      return req.game.remove().then(function(){
-        return res.sendStatus(204);
-      });
-    } else {
-      return res.sendStatus(403);
-    }
-  }).catch(next);
+    if (user.username === userGame.username) {
+      // if (utilGames.delGame(req.game)){
+      //   return res.sendStatus(204);
+      // }
+    }else return res.sendStatus(403);
+  }catch(e) {
+    next(e);
+  }
 });
 
 // Favorite an game

@@ -19,7 +19,8 @@ class GameActionsCtrl {
       this._Games.destroy(this.game.slug).then(
         (success) => this._$state.go('app.home'),
         (err) => this._$state.go('app.home')
-      )
+        )
+        console.log(err)
     }
   }
   

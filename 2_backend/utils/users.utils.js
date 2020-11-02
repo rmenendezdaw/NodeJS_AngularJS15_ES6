@@ -20,9 +20,14 @@ let addUser = async function(values) {
 
 exports.createTest = async function() {
     let user = await User.findOne({ username: 'test' });
-    console.log(user);
+    // console.log(user);
     if (!user) {
-        user = await addUser({ username: 'test', email: 'test@gmail.com', password: 'test123', idsocial: 'test@gmail.com' });
+        user = await addUser({ 
+            username: 'test',
+            email: 'test@gmail.com',
+            password: 'test1234',
+            idsocial: 'test@gmail.com'
+         });
     }// end_if
 
     return user;
