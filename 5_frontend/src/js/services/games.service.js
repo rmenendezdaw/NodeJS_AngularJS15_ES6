@@ -70,5 +70,11 @@ export default class Games {
         method: "DELETE"
         });
     }
+    destroy(slug) {
+      return this._$http({
+        url: this._AppConstants.api + '/games/' + slug,
+        method: 'DELETE'
+      })
+    }
 }
 

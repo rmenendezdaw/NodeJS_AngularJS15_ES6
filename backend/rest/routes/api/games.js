@@ -5,6 +5,7 @@ var Comment = mongoose.model('Comment');
 var User = mongoose.model('User');
 var auth = require('../auth');
 let utilGames = require('../../utils/games.utils');
+const e = require('express');
 
 // Preload game objects on routes with ':game'
 router.param('game', function(req, res, next, slug) {
@@ -196,17 +197,21 @@ router.put('/:game', auth.required, function(req, res, next) {
 // delete game
 router.delete("/:game", auth.required, async function (req, res, next) { //search by slug
   try {
-    console.log("delete1")
     let user = await User.findById(req.payload.id);
-    let userGame = await Game.findOne({slug: req.params.game}).populate('author').toJSONFor().author;
+    let userGame = await Game.findOne({slug: req.params.game});
 
-    if (user.username === userGame.username) {
-      // if (utilGames.delGame(req.game)){
-      //   return res.sendStatus(204);
-      // }
+    if (user._id.toString() === userGame.author.toString()) {
+    if(req.game.comments.length !== 0){
+      await req.game.comments.forEach(async (comment)=> { 
+        Comment.find({_id: comment}).remove().exec();
+      });
+    }
+    return await req.game.remove().then(() => { return res.sendStatus(204) });
+
     }else return res.sendStatus(403);
+    
   }catch(e) {
-    next(e);
+
   }
 });
 

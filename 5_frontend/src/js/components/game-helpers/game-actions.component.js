@@ -16,11 +16,13 @@ class GameActionsCtrl {
 }
     deleteGame() {
       this.isDeleting = true;
+      console.log(this.game)
+      console.log(this._Games)
+
       this._Games.destroy(this.game.slug).then(
         (success) => this._$state.go('app.home'),
         (err) => this._$state.go('app.home')
         )
-        console.log(err)
     }
   }
   
