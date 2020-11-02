@@ -62,16 +62,7 @@ function mongooseConnect() {
 mongooseConnect()
 
 require('./models/User');
-require('./models/Article');
-require('./models/Comment');
-
-require('./models/adventures/Adventure');
-require('./models/restaurants/Restaurant');
-require('./models/travels/Country');
-require('./models/travels/City');
-require('./models/travels/Travel');
-require('./models/hotels/Room');
-require('./models/hotels/Hotel');
+require('./models/Movie');
 
 app.use(require('./routes'));
 //// Swagger ////
@@ -80,8 +71,7 @@ app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 /// catch 404 and forward to error handler
 app.use(function(req, res, next) {
-  // console.log(req);
-  // console.log(res);
+
   var err = new Error('Not Found');
   err.status = 404;
   next(err);
