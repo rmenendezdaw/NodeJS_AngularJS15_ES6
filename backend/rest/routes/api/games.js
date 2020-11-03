@@ -4,7 +4,7 @@ var Game = mongoose.model('Game');
 var Comment = mongoose.model('Comment');
 var User = mongoose.model('User');
 var auth = require('../auth');
-let utilGames = require('../../utils/games.utils');
+let utilUsers = require('../../utils/users.utils');
 const e = require('express');
 
 // Preload game objects on routes with ':game'
@@ -52,7 +52,7 @@ router.get('/', auth.optional, function(req, res, next) {
   ]).then(function(results){
     var author = results[0];
     var favoriter = results[1];
-
+    console.log(author)
     if(author){
       query.author = author._id;
     }
@@ -81,7 +81,7 @@ router.get('/', auth.optional, function(req, res, next) {
 
       return res.json({
         games: games.map(function(game){
-          return game.toJSONFor();
+          return game.toJSONFor(user);
         }),
         gamesCount: gamesCount
       });
@@ -117,6 +117,7 @@ router.get('/feed', auth.required, function(req, res, next) {
 
       return res.json({
         games: games.map(function(game){
+          console.log(user)
           return game.toJSONFor(user);
         }),
         gamesCount: gamesCount
@@ -137,18 +138,24 @@ router.get('/filter/:category', function (req, res, next){
       return res.json({games: games});
     }).catch(next);
 })
-router.post('/', auth.required, function(req, res, next) {
-  User.findById(req.payload.id).then(function(user){
-    if (!user) { return res.sendStatus(401); }
 
+//Create game
+router.post('/', auth.required, async function(req, res, next) {
+
+
+try{
+  let user = await User.findById(req.payload.id);
+  console.log("USER POST")
+  console.log(user)
+  if (!user) { return res.sendStatus(401); }
     var game = new Game(req.body.game);
-
-    game.author = user;
-    return game.save().then(function(){
-      // console.log(game.author);
-      return res.json({game: game.toJSONFor(user)});
-    });
-  }).catch(next);
+    game.author=user;
+    await game.save();
+    await utilUsers.updateKarma(user.id, 20)
+    return res.json({game: game.toJSONFor(user) });
+  }catch(e){
+     next(e);
+  }
 });
 
 // return a game
@@ -206,12 +213,13 @@ router.delete("/:game", auth.required, async function (req, res, next) { //searc
         Comment.find({_id: comment}).remove().exec();
       });
     }
+    await utilUsers.updateKarma(user.id, -20)
     return await req.game.remove().then(() => { return res.sendStatus(204) });
 
     }else return res.sendStatus(403);
-    
-  }catch(e) {
 
+  }catch(e) {
+    next(e)
   }
 });
 

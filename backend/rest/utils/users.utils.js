@@ -32,3 +32,20 @@ exports.createTest = async function() {
 
     return user;
 }
+
+exports.updateKarma = async (id, qty) => {
+
+    let user = await User.findById(id);
+
+    if (user){
+        user = await User.findOneAndUpdate(
+            { _id: user.id}, 
+            { $inc: { karma: qty } },
+            { "fields": { karma: 1 }, new: true });
+            
+        if (user.karma < 0){
+            user.karma = 0;
+            await user.save();
+        }
+    }
+}

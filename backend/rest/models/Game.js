@@ -15,7 +15,6 @@ var GameSchema = new mongoose.Schema({
   tagList: [{ type: String }],
   author: { type: mongoose.Schema.Types.ObjectId, ref: 'User' }
 }, {timestamps: true});
-// console.log(GameSchema)
 GameSchema.plugin(uniqueValidator, {message: 'is already taken'});
 
 GameSchema.pre('validate', function(next){
@@ -41,6 +40,8 @@ GameSchema.methods.updateFavoriteCount = function() {
 };
 
 GameSchema.methods.toJSONFor = function(user){
+//   console.log("HHHHHHHHHHHHHHHHHHHHHHHHHHHH")
+// console.log(user)
   return {
     slug: this.slug,
     title: this.title,
@@ -53,7 +54,7 @@ GameSchema.methods.toJSONFor = function(user){
     tagList: this.tagList,
     favorited: user ? user.isFavorite(this._id) : false,
     favoritesCount: this.favoritesCount,
-    author: this.author.toProfileJSONFor(user)
+    author: (this.author instanceof User) ? this.author.toProfileJSONFor(user) : user.toProfileJSONFor(user)
   };
 };
 mongoose.model('Game', GameSchema);
