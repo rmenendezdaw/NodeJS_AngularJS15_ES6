@@ -2,7 +2,7 @@ import { gql } from 'apollo-server-express';
 
 const Query = gql`
     scalar Date
-    extend type Query {
+    type Query {
         message: String
     }
     type Mutation {
@@ -10,11 +10,11 @@ const Query = gql`
     }
 `;
 
-import Movie from "../../src/schemas/movies/movies.schema";
+import Company from "./company/company.schema";
 
 const typeDefs = [
     Query,
-    Movie
+    Company
 ];
 
 export default typeDefs;

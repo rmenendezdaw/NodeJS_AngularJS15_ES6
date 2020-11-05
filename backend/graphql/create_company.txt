@@ -1,0 +1,17 @@
+
+mutation createCompany($input:CompanyInput){
+  createCompany(input: $input){
+    name
+    platform
+    description
+  }
+}
+
+
+{
+  "input": {
+    "name" : "Activision",
+    "platform": "PC",
+    "description": "nice company"
+  }
+}

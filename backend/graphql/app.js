@@ -43,7 +43,7 @@ function mongooseConnect() {
       mongoose.set('useNewUrlParser', true);
       mongoose.set('useUnifiedTopology', true);
       try {
-        mongoose.connect('mongodb://mongo/conduit_nodejs');
+        mongoose.connect('mongodb://localhost/conduit_nodejs');
       } catch (error) {
         console.log(error);
         
@@ -62,7 +62,7 @@ function mongooseConnect() {
 mongooseConnect()
 
 require('./models/User');
-require('./models/Movie');
+require('./models/company/Company');
 
 app.use(require('./routes'));
 //// Swagger ////

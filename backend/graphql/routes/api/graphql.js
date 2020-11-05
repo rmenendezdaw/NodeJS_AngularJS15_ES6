@@ -16,7 +16,7 @@
 
 import { ApolloServer, AuthenticationError } from "apollo-server-express"
 import typeDefs from "../../graphql/schemas/schema";
-import resolvers from "../../graphql/resolvers/resolver";
+import resolvers from "../../graphql/resolvers/resolvers";
 const mongoose = require('mongoose');
 const User = mongoose.model('User');
 

@@ -8,11 +8,11 @@ const QueryResolvers = {
   }
 }
 
-import MovieRes from "../../src/resolvers/movies/movies.resolver";
+import CompanyRes from "./company/company.resolver";
 
 const resolvers = merge(
   QueryResolvers,
-  MovieRes
+  CompanyRes
 );
 
 export default resolvers;
