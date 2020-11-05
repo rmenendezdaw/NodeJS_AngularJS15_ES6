@@ -12,8 +12,8 @@ const resolvers = {
   },
   Mutation: {
     createCompany: (root, {input}) => {
-      console.log("----------------------------------------")
-      console.log(input)
+      // console.log("----------------------------------------")
+      // console.log(input)
         const company = new Company(input);
         // no .exec();
         company.save();

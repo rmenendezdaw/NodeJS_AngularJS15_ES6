@@ -12,17 +12,8 @@ componentsModule.directive('showAuthed', ShowAuthed);
 import FollowBtn from './buttons/follow-btn.component';
 componentsModule.component('followBtn', FollowBtn);
 
-// import ArticleMeta from './article-helpers/article-meta.component';
-// componentsModule.component('articleMeta', ArticleMeta);
-
 import FavoriteBtn from './buttons/favorite-btn.component';
 componentsModule.component('favoriteBtn', FavoriteBtn);
-
-// import ArticlePreview from './article-helpers/article-preview.component';
-// componentsModule.component('articlePreview', ArticlePreview);
-
-// import ArticleList from './article-helpers/article-list.component';
-// componentsModule.component('articleList', ArticleList);
 
 import GamesList from './games-helpers/games-list.component';
 componentsModule.component('gamesList', GamesList);
@@ -36,8 +27,13 @@ componentsModule.component('comment', Comment);
 import GameActions from './game-helpers/game-actions.component';
 componentsModule.component('gameActions', GameActions);
 
-
 import ListPagination from './games-helpers/list-pagination.component';
 componentsModule.component('listPagination', ListPagination);
+
+import CompaniesList from './companies-helpers/companies-list.component';
+componentsModule.component('companiesList', CompaniesList);
+
+import CompaniesPreview from './companies-helpers/companies-preview.component';
+componentsModule.component('companiesPreview', CompaniesPreview);
 
 export default componentsModule;
