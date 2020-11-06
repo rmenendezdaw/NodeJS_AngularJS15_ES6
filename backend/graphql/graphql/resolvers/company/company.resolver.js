@@ -7,6 +7,7 @@ const resolvers = {
       return Company.findOne({slug: slug}).exec();
     },
     companies: () =>  {
+      console.log('test')
       return Company.find().exec();
     }
   },

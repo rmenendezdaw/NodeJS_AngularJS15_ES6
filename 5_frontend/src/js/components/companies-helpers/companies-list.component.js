@@ -52,22 +52,23 @@ class CompaniesListCtrl {
       // Add the offset filter
       queryConfig.filters.offset = (this.limit * (this.listConfig.currentPage - 1));
     // Run the query
-    this._Games
-      .query(queryConfig)
+    this._Companies
+      .getAll()
       .then(
         (res) => {
-          // console.log(res)
+          console.log("------------------------------------result")
+          console.log(res)
           this.loading = false;
   
           // Update list and total pages
-          this.list = res.games;
+          this.list = res.companies;
   
-          this.listConfig.totalPages = Math.ceil(res.gamesCount / this.limit);
+          this.listConfig.totalPages = Math.ceil(res.companiesCount / this.limit);
         }
       );
     }
   }
-    let GamesList = {
+    let CompaniesList = {
       bindings: {
         company: '=',
         listConfig: '='
@@ -76,4 +77,4 @@ class CompaniesListCtrl {
       templateUrl: 'components/companies-helpers/companies-list.html'
     };
   
-    export default GamesList;
+    export default CompaniesList;

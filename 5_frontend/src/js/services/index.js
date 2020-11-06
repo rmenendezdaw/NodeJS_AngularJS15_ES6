@@ -28,5 +28,10 @@ servicesModule.service('Tags', TagsService);
 import GamesService from './games.service';
 servicesModule.service('Games', GamesService);
 
+import CompaniesService from './companies.service';
+servicesModule.service('Companies', CompaniesService)
+
+import GraphqlClientService from './graphql.service';
+servicesModule.service('GraphQLClient', GraphqlClientService)
 
 export default servicesModule;

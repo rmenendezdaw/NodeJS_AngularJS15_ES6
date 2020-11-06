@@ -52,7 +52,6 @@ router.get('/', auth.optional, function(req, res, next) {
   ]).then(function(results){
     var author = results[0];
     var favoriter = results[1];
-    console.log(author)
     if(author){
       query.author = author._id;
     }
@@ -117,7 +116,7 @@ router.get('/feed', auth.required, function(req, res, next) {
 
       return res.json({
         games: games.map(function(game){
-          console.log(user)
+          // console.log(user)
           return game.toJSONFor(user);
         }),
         gamesCount: gamesCount
@@ -145,8 +144,8 @@ router.post('/', auth.required, async function(req, res, next) {
 
 try{
   let user = await User.findById(req.payload.id);
-  console.log("USER POST")
-  console.log(user)
+  // console.log("USER POST")
+  // console.log(user)
   if (!user) { return res.sendStatus(401); }
     var game = new Game(req.body.game);
     game.author=user;

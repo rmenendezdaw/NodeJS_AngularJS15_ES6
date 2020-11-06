@@ -4,7 +4,7 @@
  import { setContext } from 'apollo-link-context';
  import gql from 'graphql-tag'
  
- export default class GraphQL {
+ export default class GraphQLClient {
      constructor(AppConstants, $q, JWT) {
          'ngInject';
  
@@ -17,7 +17,7 @@
  
      createClient(server = this._AppConstants.api_gql) {
          return new ApolloClient({
-             link: createHttpLink({ uri: server }),
+             link: createHttpLink({ uri: server + '/graphql/'}),
              cache: new InMemoryCache()
          });
      }
