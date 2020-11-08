@@ -5,6 +5,8 @@ var Comment = mongoose.model('Comment');
 var User = mongoose.model('User');
 var auth = require('../auth');
 let utilUsers = require('../../utils/users.utils');
+let utilGames = require('../../utils/games.utils');
+
 const e = require('express');
 
 // Preload game objects on routes with ':game'
@@ -70,6 +72,7 @@ router.get('/', auth.optional, function(req, res, next) {
         .skip(Number(offset))
         .sort({createdAt: 'desc'})
         .populate('author')
+        .populate('company')
         .exec(),
       Game.count(query).exec(),
       req.payload ? User.findById(req.payload.id) : null,
@@ -147,8 +150,11 @@ try{
   // console.log("USER POST")
   // console.log(user)
   if (!user) { return res.sendStatus(401); }
+    
+    let company= await utilGames.requestCompany(req.body.game.company)
     var game = new Game(req.body.game);
     game.author=user;
+    game.company = company.id;
     await game.save();
     await utilUsers.updateKarma(user.id, 20)
     return res.json({game: game.toJSONFor(user) });

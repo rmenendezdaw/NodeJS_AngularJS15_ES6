@@ -9,6 +9,7 @@ const typeDefs = gql`
         createCompany(input: CompanyInput): Company
     }
     type Company {
+        id: ID!
         slug: String!
         title: String
         platform: String

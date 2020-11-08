@@ -45,6 +45,7 @@ if(isProduction){
 }
 
 require('./models/User');
+require('./models/Company');
 require('./models/Game');
 require('./models/Article');
 require('./models/Comment');

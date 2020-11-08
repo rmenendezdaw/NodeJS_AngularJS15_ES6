@@ -2,6 +2,8 @@ var mongoose = require('mongoose');
 var uniqueValidator = require('mongoose-unique-validator');
 var slug = require('slug');
 var User = mongoose.model('User');
+var Company = mongoose.model('Company');
+
 
 var GameSchema = new mongoose.Schema({
   slug: {type: String, lowercase: true, unique: true},
@@ -10,6 +12,7 @@ var GameSchema = new mongoose.Schema({
   price: String,
   category: String, 
   body: String,
+  company: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Company' }],
   favoritesCount: {type: Number, default: 0},
   comments: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Comment' }],
   tagList: [{ type: String }],
@@ -47,6 +50,7 @@ GameSchema.methods.toJSONFor = function(user){
     title: this.title,
     description: this.description,
     body: this.body,
+    company: this.company,
     price: this.price,
     category: this.category,
     createdAt: this.createdAt,
