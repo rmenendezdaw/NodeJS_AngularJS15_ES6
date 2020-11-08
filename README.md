@@ -1,6 +1,6 @@
-#GAMES_ANGULARJS1.5_NODEJS
+# GAMES_ANGULARJS1.5_NODEJS
 
-##How to use
+## How to use
 
 To get the Node server running locally:
 
@@ -10,19 +10,19 @@ To get the Node server running locally:
 
 - `npm run dev` to start the local server
 
-##Technologies
+## Technologies
 
-###Backend
+### Backend
 - Node JS
 - Graphql
 
-###Frontend
+### Frontend
 - AngularJS 1.5
 
-###Databases 
+### Databases 
 - Mongo
 
-##Libraries
+## Libraries
 - Passport
 - FakerJS
 - JWT 
@@ -30,6 +30,6 @@ To get the Node server running locally:
 - Gulp
 - Webpack
 
-##Development tools
+## Development tools
 - Postman
 - Swagger
