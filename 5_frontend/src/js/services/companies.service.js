@@ -9,16 +9,17 @@ export default class Companies {
   
     }
     //graphql request to get all companies
+    
     getAll() {
       let query = `
-        query getCompanies {
-          companies{
-          slug 
-          title 
+      query{
+        companies{
+          slug
+          title
           platform
           description
-          }
         }
+    }
       `;
       return this._GQL.get(query);
     }

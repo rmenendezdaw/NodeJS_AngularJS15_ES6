@@ -5,7 +5,6 @@ class HomeCtrl {
     this.appName = AppConstants.appName;
     this.categories = categories;
     this._$scope = $scope;
-    // console.log(categories)
     Tags
       .getAll()
       .then(
@@ -22,7 +21,7 @@ class HomeCtrl {
   
   }
   changeList(newList) {
-    console.log(newList)
+    // console.log(newList)
     this._$scope.$broadcast('setListTo', newList);
   }
 }
