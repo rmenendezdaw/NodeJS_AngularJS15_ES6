@@ -32,4 +32,5 @@ To get the Node server running locally:
 
 ## Development tools
 - Postman
+- Docker
 - Swagger
